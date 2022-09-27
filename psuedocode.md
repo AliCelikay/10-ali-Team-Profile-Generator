@@ -1,3 +1,15 @@
+1) Make classes per ReadMeinstructions
+2) Aline folders per ReadMeinstructions
+
+3) Make an html page and create the outline similar to instructions
+
+4)Create Employee array questions
+    *Create manager questions
+    *Create engineer questions
+    *Create intern questions
+
+
+
 ```md
 GIVEN a command-line application that accepts user input
 

@@ -1,0 +1,35 @@
+/* Hero title classes below */
+.hero-background{
+    background-color: skyblue;
+}
+
+.title-center-text{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+}
+
+
+/* Card area class for flex properties */
+.card-placement-area{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
+/* Title card classes */
+.employee-header-background{
+    background-color: red;
+    padding: 20px;
+}
+
+.employee-header-text{
+    font-weight: bold;
+    color: white;
+}
+
+.employee-info-card{
+    padding: 50px 20px;
+}
