@@ -1,1 +1,0 @@
-# 10-ali-Team-Profile-Generator
