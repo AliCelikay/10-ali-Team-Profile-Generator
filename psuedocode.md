@@ -2,8 +2,11 @@
 2) Aline folders per ReadMeinstructions
 
 3) Make an html page and create the outline similar to instructions
+    *create template card
 
-4)Create Employee array questions
+4) Add and update temp card to role classes
+
+5)Create Employee array questions
     *Create manager questions
     *Create engineer questions
     *Create intern questions
