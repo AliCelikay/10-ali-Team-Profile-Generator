@@ -10,6 +10,9 @@
     *Create manager questions
     *Create engineer questions
     *Create intern questions
+    *if 'Exit' was chosen then print html
+
+6)
 
 
 
