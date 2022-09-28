@@ -12,8 +12,23 @@
     *Create intern questions
     *if 'Exit' was chosen then print html
 
-6)
+6) Create a firstQuestion() function
+    *returns M E I or Exit
+7) set var firstAns = firstQuestion();
 
+8)switch (firstAns)
+9) in: case 'M'
+    we set: var managAns = managerQueries(); //managerQueries asks manager questions and return ans object
+
+11) //deconstruct managAns
+
+12) set: var managerCardInfo = managerRenderFunction(); // this function is from the manager class
+        // the var stores the renderCard string literal
+
+13) return; and repeat for E and I
+
+14) for: case 'Exit'
+    return a writeFile??
 
 
 ```md
