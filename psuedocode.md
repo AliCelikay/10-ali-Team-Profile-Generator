@@ -25,9 +25,11 @@
 12) set: var managerCardInfo = managerRenderFunction(); // this function is from the manager class
         // the var stores the renderCard string literal
 
-13) return; and repeat for E and I
+13) call firstQuestion(); // this will allow return to main menu
 
-14) for: case 'Exit'
+14) return; and repeat for E and I
+
+15) for: case 'Exit'
     return a writeFile??
 
 
