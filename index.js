@@ -10,7 +10,6 @@ const Engineer = require('./lib/Engineer.js');
 const Intern = require('./lib/Intern.js');
 const questions = require('./questions');
 
-var firstAns;
 
 //init function creation in es6 version
 const init = () => {
@@ -36,6 +35,7 @@ const init = () => {
     })
 }
 
+//Employee adding first question function
 let firstQuestion = () => {
     return inquirer
     .prompt([
@@ -103,6 +103,7 @@ let engineerQueries = () => {
         },
     ]).then((ans) => {
         engineerCardInfo(ans);
+        init();
     })
 }
 
@@ -131,6 +132,7 @@ let internQueries = () => {
         },
     ]).then((ans) => {
         internCardInfo(ans);
+        init();
     })
 }
 
@@ -153,7 +155,7 @@ const engineerCardInfo = (ans) => {
 const internCardInfo = (ans) => {
     let {name, id, email, school} = ans;
     let intern = new Intern(name, id, email, school);
-    fs.writeFile('./dist/index.html', intern.renderCard() , (err) => err ? console.error(err) : console.log('Success!'));
+    fs.appendFile('./dist/index.html', intern.renderCard() , (err) => err ? console.error(err) : console.log('Success!'));
 }
 
 
