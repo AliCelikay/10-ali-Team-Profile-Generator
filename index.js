@@ -13,6 +13,7 @@ const questions = require('./questions');
 
 //init function creation in es6 version
 const init = () => {
+    firstHalfHTML();
     firstQuestion()
     .then((ans) => {
         switch (ans.firstChoice) {
@@ -20,16 +21,18 @@ const init = () => {
                 managerQueries();
                 break;
             case 'Engineer':
+            
                 engineerQueries();
                 break;
             case 'Intern':
                 internQueries();
                 break;
             case 'Exit':
-                managerQueries();
+                console.log(`Your HTML file is ready!
+                Goodbye.`);
+                lastHalfHTML();
                 break;
             default:
-
                 break;
         }
     })
@@ -138,7 +141,6 @@ let internQueries = () => {
 
 
 
-
 // Employee info and rendering card information functions
 const managerCardInfo = (ans) => {
     let {name, id, email, officeNumber} = ans;
@@ -159,8 +161,52 @@ const internCardInfo = (ans) => {
 }
 
 
+//Beginning of HTML
+const firstHalfHTML = () => {
+    fs.writeFile('./dist/index.html', `<!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Team Roster Generator</title>
+        <!-- bootstrap link -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+            integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+        <!-- style.css link -->
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    
+    <body>
+        <div class="jumbotron jumbotron-fluid hero-background">
+            <div class="container">
+                <h1 class="display-4 title-center-text">My Team</h1>
+            </div>
+        </div>
+    
+    
+    
+        <div class="card-placement-area">
+    `, (err) => err ? console.error(err) : console.log('Success!'));
+}
+
+//End of HTML
+const lastHalfHTML = () => {
+    fs.appendFile('./dist/index.html', `
+    </div>
 
 
+
+    <!-- index.js link (main code) -->
+    <script src="index.js"></script>
+
+</body>
+
+</html>
+
+`, (err) => err ? console.error(err) : console.log('Success!'));
+}
 
 //Calling the initial function
 init();
