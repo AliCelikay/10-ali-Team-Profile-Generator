@@ -8,12 +8,11 @@ const Employee = require('./lib/Employee.js');
 const Manager = require('./lib/Manager.js');
 const Engineer = require('./lib/Engineer.js');
 const Intern = require('./lib/Intern.js');
-const questions = require('./questions');
+// const questions = require('./questions');
 
 
 //init function creation in es6 version
 const init = () => {
-    firstHalfHTML();
     firstQuestion()
     .then((ans) => {
         switch (ans.firstChoice) {
@@ -21,15 +20,13 @@ const init = () => {
                 managerQueries();
                 break;
             case 'Engineer':
-            
                 engineerQueries();
                 break;
             case 'Intern':
                 internQueries();
                 break;
             case 'Exit':
-                console.log(`Your HTML file is ready!
-                Goodbye.`);
+                console.log(`Your HTML file is ready!`);
                 lastHalfHTML();
                 break;
             default:
@@ -82,7 +79,7 @@ let managerQueries = () => {
 }
 
 let engineerQueries = () => {
-    return inquirer
+    inquirer
     .prompt([
         {
             type: 'input',
@@ -111,7 +108,7 @@ let engineerQueries = () => {
 }
 
 let internQueries = () => {
-    return inquirer
+    inquirer
     .prompt([
         {
             type: 'input',
@@ -142,19 +139,19 @@ let internQueries = () => {
 
 
 // Employee info and rendering card information functions
-const managerCardInfo = (ans) => {
+let managerCardInfo = (ans) => {
     let {name, id, email, officeNumber} = ans;
     let manager = new Manager(name, id, email, officeNumber);
     fs.appendFile('./dist/index.html', manager.renderCard() , (err) => err ? console.error(err) : console.log('Success!'));
 }
 
-const engineerCardInfo = (ans) => {
+let engineerCardInfo = (ans) => {
     let {name, id, email, github} = ans;
     let engineer = new Engineer(name, id, email, github);
     fs.appendFile('./dist/index.html', engineer.renderCard() , (err) => err ? console.error(err) : console.log('Success!'));
 }
 
-const internCardInfo = (ans) => {
+let internCardInfo = (ans) => {
     let {name, id, email, school} = ans;
     let intern = new Intern(name, id, email, school);
     fs.appendFile('./dist/index.html', intern.renderCard() , (err) => err ? console.error(err) : console.log('Success!'));
@@ -163,40 +160,37 @@ const internCardInfo = (ans) => {
 
 //Beginning of HTML
 const firstHalfHTML = () => {
-    fs.writeFile('./dist/index.html', `<!DOCTYPE html>
-    <html lang="en">
-    
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Team Roster Generator</title>
-        <!-- bootstrap link -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-            integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-        <!-- style.css link -->
-        <link rel="stylesheet" href="./style.css">
-    </head>
-    
-    <body>
-        <div class="jumbotron jumbotron-fluid hero-background">
-            <div class="container">
-                <h1 class="display-4 title-center-text">My Team</h1>
-            </div>
+    fs.writeFile('./dist/index.html', 
+    `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Roster Generator</title>
+    <!-- bootstrap link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <!-- style.css link -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid hero-background">
+        <div class="container">
+            <h1 class="display-4 title-center-text">My Team</h1>
         </div>
-    
-    
-    
-        <div class="card-placement-area">
-    `, (err) => err ? console.error(err) : console.log('Success!'));
+    </div>
+
+    <div class="card-placement-area">
+        `, (err) => err ? console.error(err) : console.log('Success!'));
 }
 
 //End of HTML
 const lastHalfHTML = () => {
     fs.appendFile('./dist/index.html', `
     </div>
-
-
 
     <!-- index.js link (main code) -->
     <script src="index.js"></script>
@@ -207,6 +201,9 @@ const lastHalfHTML = () => {
 
 `, (err) => err ? console.error(err) : console.log('Success!'));
 }
+
+//Calling this function first in order to create the html file
+firstHalfHTML();
 
 //Calling the initial function
 init();
