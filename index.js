@@ -184,7 +184,7 @@ const firstHalfHTML = () => {
     </div>
 
     <div class="card-placement-area">
-        `, (err) => err ? console.error(err) : console.log('Success!'));
+        `, (err) => err ? console.error(err) : console.log('Success'));
 }
 
 //End of HTML
